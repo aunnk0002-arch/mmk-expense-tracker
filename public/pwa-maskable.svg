@@ -1,0 +1,7 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Maskable icons should have generous safe area -->
+  <rect width="512" height="512" fill="#4F46E5"/>
+  <path d="M168 206C168 189.431 181.431 176 198 176H314C330.569 176 344 189.431 344 206V346C344 362.569 330.569 376 314 376H198C181.431 376 168 362.569 168 346V206Z" fill="white" fill-opacity="0.16"/>
+  <path d="M208 320C208 300.118 224.118 284 244 284H316V320C316 339.882 299.882 356 280 356H208V320Z" fill="white" fill-opacity="0.92"/>
+  <path d="M208 232C208 222.059 216.059 214 226 214H298C307.941 214 316 222.059 316 232V250H208V232Z" fill="white" fill-opacity="0.92"/>
+</svg>

@@ -1,0 +1,17 @@
+packages:
+  "framer-motion": "For smooth page transitions and list animations"
+  "recharts": "For beautiful category breakdown charts"
+  "date-fns": "For date formatting and calculations"
+  "uuid": "For generating unique IDs for local storage items"
+  "@types/uuid": "Types for uuid"
+  "lucide-react": "For crisp UI icons"
+  "react-hook-form": "For robust form state management"
+  "@hookform/resolvers": "For zod validation in forms"
+  "zod": "For runtime type safety and form validation"
+  "clsx": "For conditional class merging"
+  "tailwind-merge": "For merging tailwind classes safely"
+
+notes:
+  - Pure frontend React application using localStorage for data persistence
+  - No backend API calls; all Tanstack Query hooks wrap localStorage operations
+  - Mobile-first responsive design tailored for a modern finance app aesthetic
