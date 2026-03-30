@@ -93,7 +93,7 @@ export function AddExpenseDrawer() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] md:bottom-8 right-4 md:right-8 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
+        className="fixed bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] md:bottom-8 right-4 md:right-8 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#2D3BFA] via-[#2441FF] to-[#1B36F2] text-white shadow-xl shadow-primary/30 ring-1 ring-white/10 transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
         aria-label="Add expense"
       >
         <Plus size={28} strokeWidth={2.5} />
