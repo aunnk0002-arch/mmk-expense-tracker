@@ -135,125 +135,133 @@ export function AddExpenseDrawer() {
                 </button>
               </div>
 
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 overflow-y-auto pb-4">
-                {/* Amount */}
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-muted-foreground">
-                    Amount (MMK)
-                  </label>
-                  <div className="relative">
-                    <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-muted-foreground">
-                      K
-                    </span>
-                    <input
-                      type="number"
-                      autoFocus
-                      {...form.register("amount", { valueAsNumber: true })}
-                      className="w-full rounded-2xl border-2 border-border bg-background py-4 pl-10 pr-4 text-xl font-bold focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
-                      placeholder="0"
-                    />
-                  </div>
-                  {form.formState.errors.amount && (
-                    <p className="mt-1 text-sm text-destructive">
-                      {form.formState.errors.amount.message}
-                    </p>
-                  )}
-                </div>
-
-                {/* Category Dropdown */}
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-muted-foreground">
-                    Category
-                  </label>
-                  <div className="relative">
-                    <select
-                      {...form.register("category")}
-                      onChange={(e) => {
-                        form.setValue("category", e.target.value, { shouldValidate: true });
-                        if (e.target.value !== "Other") setCustomCategory("");
-                      }}
-                      className="w-full appearance-none rounded-xl border-2 border-border bg-background px-4 py-3 pr-10 text-sm font-medium focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer"
-                    >
-                      <option value="" disabled>
-                        Select a category...
-                      </option>
-                      {categories.map((cat) => (
-                        <option key={cat} value={cat}>
-                          {cat}
-                        </option>
-                      ))}
-                    </select>
-                    <ChevronDown
-                      size={16}
-                      className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
-                    />
-                  </div>
-                  {form.formState.errors.category && (
-                    <p className="mt-1 text-sm text-destructive">
-                      {form.formState.errors.category.message}
-                    </p>
-                  )}
-
-                  {/* Custom category input — shown only when "Other" is selected */}
-                  <AnimatePresence>
-                    {isOther && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                        animate={{ opacity: 1, height: "auto", marginTop: 12 }}
-                        exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
-                      >
-                        <input
-                          type="text"
-                          autoFocus
-                          value={customCategory}
-                          onChange={(e) => setCustomCategory(e.target.value)}
-                          maxLength={40}
-                          className="w-full rounded-xl border-2 border-primary bg-background px-4 py-3 text-sm focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
-                          placeholder="Enter custom category name..."
-                        />
-                      </motion.div>
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="flex min-h-0 flex-1 flex-col"
+              >
+                <div className="min-h-0 flex-1 space-y-5 overflow-y-auto pb-6">
+                  {/* Amount */}
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-muted-foreground">
+                      Amount (MMK)
+                    </label>
+                    <div className="relative">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-muted-foreground">
+                        K
+                      </span>
+                      <input
+                        type="number"
+                        inputMode="numeric"
+                        enterKeyHint="done"
+                        autoFocus
+                        {...form.register("amount", { valueAsNumber: true })}
+                        className="w-full rounded-2xl border-2 border-border bg-background py-4 pl-10 pr-4 text-xl font-bold focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                        placeholder="0"
+                      />
+                    </div>
+                    {form.formState.errors.amount && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {form.formState.errors.amount.message}
+                      </p>
                     )}
-                  </AnimatePresence>
+                  </div>
+
+                  {/* Category Dropdown */}
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-muted-foreground">
+                      Category
+                    </label>
+                    <div className="relative">
+                      <select
+                        {...form.register("category")}
+                        onChange={(e) => {
+                          form.setValue("category", e.target.value, { shouldValidate: true });
+                          if (e.target.value !== "Other") setCustomCategory("");
+                        }}
+                        className="w-full appearance-none rounded-xl border-2 border-border bg-background px-4 py-3 pr-10 text-sm font-medium focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer"
+                      >
+                        <option value="" disabled>
+                          Select a category...
+                        </option>
+                        {categories.map((cat) => (
+                          <option key={cat} value={cat}>
+                            {cat}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown
+                        size={16}
+                        className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground"
+                      />
+                    </div>
+                    {form.formState.errors.category && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {form.formState.errors.category.message}
+                      </p>
+                    )}
+
+                    {/* Custom category input — shown only when "Other" is selected */}
+                    <AnimatePresence>
+                      {isOther && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                          animate={{ opacity: 1, height: "auto", marginTop: 12 }}
+                          exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <input
+                            type="text"
+                            autoFocus
+                            value={customCategory}
+                            onChange={(e) => setCustomCategory(e.target.value)}
+                            maxLength={40}
+                            className="w-full rounded-xl border-2 border-primary bg-background px-4 py-3 text-sm focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                            placeholder="Enter custom category name..."
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Note */}
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-muted-foreground">
+                      Note (Optional)
+                    </label>
+                    <input
+                      type="text"
+                      enterKeyHint="done"
+                      {...form.register("note")}
+                      className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                      placeholder="What was this for?"
+                    />
+                    {form.formState.errors.note && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {form.formState.errors.note.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Date */}
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-muted-foreground">
+                      Date
+                    </label>
+                    <input
+                      type="date"
+                      {...form.register("date")}
+                      className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                    />
+                    {form.formState.errors.date && (
+                      <p className="mt-1 text-sm text-destructive">
+                        {form.formState.errors.date.message}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
-                {/* Note */}
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-muted-foreground">
-                    Note (Optional)
-                  </label>
-                  <input
-                    type="text"
-                    {...form.register("note")}
-                    className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
-                    placeholder="What was this for?"
-                  />
-                  {form.formState.errors.note && (
-                    <p className="mt-1 text-sm text-destructive">
-                      {form.formState.errors.note.message}
-                    </p>
-                  )}
-                </div>
-
-                {/* Date */}
-                <div>
-                  <label className="mb-2 block text-sm font-medium text-muted-foreground">
-                    Date
-                  </label>
-                  <input
-                    type="date"
-                    {...form.register("date")}
-                    className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
-                  />
-                  {form.formState.errors.date && (
-                    <p className="mt-1 text-sm text-destructive">
-                      {form.formState.errors.date.message}
-                    </p>
-                  )}
-                </div>
-
-                <div className="pt-2">
+                <div className="sticky bottom-0 -mx-6 mt-2 border-t border-border/60 bg-card/95 px-6 pb-[calc(1rem+env(safe-area-inset-bottom,0px))] pt-3 backdrop-blur">
                   <button
                     type="submit"
                     disabled={isPending}
