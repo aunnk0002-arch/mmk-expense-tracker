@@ -19,7 +19,13 @@ export function ExpenseItem({ expense }: { expense: Expense }) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95 }}
         whileHover={{ y: -2 }}
-        className="group relative flex items-center justify-between rounded-2xl bg-card p-4 shadow-sm border border-border/50 hover:shadow-md transition-all duration-300"
+        onClick={() => setEditOpen(true)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") setEditOpen(true);
+        }}
+        className="group relative flex cursor-pointer items-center justify-between rounded-2xl bg-card p-4 shadow-sm border border-border/50 hover:shadow-md transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/15"
       >
         <div className="flex items-center gap-4 overflow-hidden">
           <CategoryIcon category={expense.category} size={24} className="h-12 w-12 shrink-0" />
@@ -41,21 +47,29 @@ export function ExpenseItem({ expense }: { expense: Expense }) {
           <span className="font-bold font-display text-foreground">
             {formatMMK(expense.amount)}
           </span>
-          <button
-            onClick={() => setEditOpen(true)}
-            className="flex h-9 w-9 lg:h-8 lg:w-8 items-center justify-center rounded-full bg-primary/10 text-primary opacity-100 lg:opacity-0 lg:group-hover:opacity-100 hover:bg-primary hover:text-primary-foreground transition-all focus:opacity-100 active:scale-90"
-            aria-label="Edit expense"
-          >
-            <Pencil size={14} />
-          </button>
-          <button
-            onClick={() => deleteExpense(expense.id)}
-            disabled={isPending}
-            className="flex h-9 w-9 lg:h-8 lg:w-8 items-center justify-center rounded-full bg-destructive/10 text-destructive opacity-100 lg:opacity-0 lg:group-hover:opacity-100 hover:bg-destructive hover:text-destructive-foreground transition-all focus:opacity-100 active:scale-90 disabled:opacity-50"
-            aria-label="Delete expense"
-          >
-            <Trash2 size={14} />
-          </button>
+          <div className="hidden md:flex items-center gap-2">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setEditOpen(true);
+              }}
+              className="flex h-9 w-9 lg:h-8 lg:w-8 items-center justify-center rounded-full bg-primary/10 text-primary opacity-100 lg:opacity-0 lg:group-hover:opacity-100 hover:bg-primary hover:text-primary-foreground transition-all focus:opacity-100 active:scale-90"
+              aria-label="Edit expense"
+            >
+              <Pencil size={14} />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                deleteExpense(expense.id);
+              }}
+              disabled={isPending}
+              className="flex h-9 w-9 lg:h-8 lg:w-8 items-center justify-center rounded-full bg-destructive/10 text-destructive opacity-100 lg:opacity-0 lg:group-hover:opacity-100 hover:bg-destructive hover:text-destructive-foreground transition-all focus:opacity-100 active:scale-90 disabled:opacity-50"
+              aria-label="Delete expense"
+            >
+              <Trash2 size={14} />
+            </button>
+          </div>
         </div>
       </motion.div>
 
