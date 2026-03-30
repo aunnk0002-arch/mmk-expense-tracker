@@ -30,6 +30,22 @@ export default function Dashboard() {
   return (
     <div className="space-y-6 animate-in fade-in duration-500">
 
+      {/* This Month summary */}
+      <div className="rounded-2xl bg-card p-5 shadow-sm border border-border/60 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+            <CalendarDays size={18} className="text-primary" />
+          </div>
+          <div>
+            <p className="text-xs text-muted-foreground font-medium">This Month</p>
+            <p className="text-xl font-bold text-foreground">{formatMMK(totalThisMonth)}</p>
+          </div>
+        </div>
+        <span className="text-xs text-muted-foreground">
+          {thisMonthExpenses.length} transaction{thisMonthExpenses.length === 1 ? "" : "s"}
+        </span>
+      </div>
+
       {/* Hero — Today's Spending */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#062B55] via-[#083B73] to-[#0A4A8C] p-7 text-white shadow-xl shadow-primary/25 ring-1 ring-white/15">
         <div className="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
@@ -62,22 +78,6 @@ export default function Dashboard() {
             </button>
           )}
         </div>
-      </div>
-
-      {/* This Month summary */}
-      <div className="rounded-2xl bg-card p-5 shadow-sm border border-border/60 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
-            <CalendarDays size={18} className="text-primary" />
-          </div>
-          <div>
-            <p className="text-xs text-muted-foreground font-medium">This Month</p>
-            <p className="text-xl font-bold text-foreground">{formatMMK(totalThisMonth)}</p>
-          </div>
-        </div>
-        <span className="text-xs text-muted-foreground">
-          {thisMonthExpenses.length} transaction{thisMonthExpenses.length === 1 ? "" : "s"}
-        </span>
       </div>
 
       {/* Recent Transactions — full width */}
