@@ -20,7 +20,8 @@
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
   
-  --primary: 238 81% 52%;
+  /* Deeper “app blue” highlight (matches your screenshots) */
+  --primary: 234 92% 58%;
   --primary-foreground: 210 40% 98%;
   
   --secondary: 210 40% 96.1%;
@@ -37,12 +38,12 @@
 
   --border: 214.3 31.8% 91.4%;
   --input: 214.3 31.8% 91.4%;
-  --ring: 238 81% 52%;
+  --ring: 234 92% 58%;
 
   --sidebar: 0 0% 100%;
   --sidebar-foreground: 222 47% 11%;
   --sidebar-border: 214.3 31.8% 91.4%;
-  --sidebar-ring: 238 81% 52%;
+  --sidebar-ring: 234 92% 58%;
 
   --radius: 1rem;
 }
@@ -57,7 +58,7 @@
   --popover: 222 47% 9%;
   --popover-foreground: 210 40% 98%;
 
-  --primary: 238 81% 62%;
+  --primary: 234 92% 64%;
   --primary-foreground: 222 47% 7%;
 
   --secondary: 217.2 32.6% 17.5%;
@@ -74,12 +75,12 @@
 
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
-  --ring: 238 81% 62%;
+  --ring: 234 92% 64%;
 
   --sidebar: 222 47% 9%;
   --sidebar-foreground: 210 40% 98%;
   --sidebar-border: 217.2 32.6% 17.5%;
-  --sidebar-ring: 238 81% 62%;
+  --sidebar-ring: 234 92% 64%;
 }
 
 @layer base {
