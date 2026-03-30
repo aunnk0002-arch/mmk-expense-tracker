@@ -31,7 +31,7 @@ export default function Dashboard() {
     <div className="space-y-6 animate-in fade-in duration-500">
 
       {/* Hero — Today's Spending */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary/80 p-7 text-primary-foreground shadow-xl shadow-primary/25 ring-1 ring-white/15">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#2D3BFA] via-[#2441FF] to-[#1B36F2] p-7 text-white shadow-xl shadow-primary/25 ring-1 ring-white/15">
         <div className="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
         <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-black/10 blur-2xl" />
         <div className="absolute inset-0 opacity-40 [background:radial-gradient(circle_at_30%_10%,rgba(255,255,255,.35),transparent_45%)]" />
