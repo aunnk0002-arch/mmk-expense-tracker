@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Plus, ChevronDown, X } from "lucide-react";
+import { Plus, ChevronDown, X, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAddExpense, categories, expenseSchema } from "@/hooks/use-expenses";
 import { useToast } from "@/hooks/use-toast";
@@ -43,8 +43,14 @@ export function AddExpenseDrawer() {
     try {
       await addExpense({ ...data, category: finalCategory });
       toast({
-        title: "Expense added",
+        title: (
+          <span className="inline-flex items-center gap-2">
+            <CheckCircle2 className="h-4 w-4" />
+            Expense added
+          </span>
+        ),
         description: "Successfully tracked K " + data.amount.toLocaleString(),
+        variant: "success",
       });
       handleClose();
     } catch {
@@ -87,7 +93,7 @@ export function AddExpenseDrawer() {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] md:bottom-8 right-4 md:right-8 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
+        className="fixed bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] md:bottom-8 right-4 md:right-8 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-xl shadow-primary/30 transition-all hover:scale-105 active:scale-95 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
         aria-label="Add expense"
       >
         <Plus size={28} strokeWidth={2.5} />
