@@ -81,7 +81,7 @@ export default function Dashboard() {
       </div>
 
       {/* Recent Transactions — full width */}
-      <div className="rounded-3xl bg-card p-6 shadow-sm border border-border/60">
+      <div className="rounded-3xl bg-card p-6 pb-24 md:pb-6 shadow-sm border border-border/60">
         <div className="flex items-center justify-between mb-5">
           <h3 className="text-lg font-bold text-foreground">Recent</h3>
           <Link
