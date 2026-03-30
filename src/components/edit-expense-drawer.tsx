@@ -124,7 +124,7 @@ export function EditExpenseDrawer({ expense, isOpen, onClose }: EditExpenseDrawe
               <div className="min-h-0 flex-1 space-y-5 overflow-y-auto pb-6">
                 {/* Amount */}
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-muted-foreground">
+                  <label className="mb-2 block text-sm font-semibold text-foreground/80">
                     Amount (MMK)
                   </label>
                   <div className="relative">
@@ -137,7 +137,7 @@ export function EditExpenseDrawer({ expense, isOpen, onClose }: EditExpenseDrawe
                       enterKeyHint="done"
                       autoFocus
                       {...form.register("amount", { valueAsNumber: true })}
-                      className="w-full rounded-2xl border-2 border-border bg-background py-4 pl-10 pr-4 text-xl font-bold focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                      className="w-full rounded-2xl border-2 border-border bg-background py-4 pl-10 pr-4 text-xl font-bold text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
                       placeholder="0"
                     />
                   </div>
@@ -150,7 +150,7 @@ export function EditExpenseDrawer({ expense, isOpen, onClose }: EditExpenseDrawe
 
                 {/* Category */}
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-muted-foreground">
+                  <label className="mb-2 block text-sm font-semibold text-foreground/80">
                     Category
                   </label>
                   <div className="relative">
@@ -160,7 +160,7 @@ export function EditExpenseDrawer({ expense, isOpen, onClose }: EditExpenseDrawe
                         form.setValue("category", e.target.value, { shouldValidate: true });
                         if (e.target.value !== "Other") setCustomCategory("");
                       }}
-                      className="w-full appearance-none rounded-xl border-2 border-border bg-background px-4 py-3 pr-10 text-sm font-medium focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer"
+                      className="w-full appearance-none rounded-xl border-2 border-border bg-background px-4 py-3 pr-10 text-sm font-semibold text-foreground focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all cursor-pointer"
                     >
                       {categories.map((cat) => (
                         <option key={cat} value={cat}>{cat}</option>
@@ -192,7 +192,7 @@ export function EditExpenseDrawer({ expense, isOpen, onClose }: EditExpenseDrawe
                           value={customCategory}
                           onChange={(e) => setCustomCategory(e.target.value)}
                           maxLength={40}
-                          className="w-full rounded-xl border-2 border-primary bg-background px-4 py-3 text-sm focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                          className="w-full rounded-xl border-2 border-primary bg-background px-4 py-3 text-sm font-semibold text-foreground placeholder:text-muted-foreground/70 focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
                           placeholder="Enter custom category name..."
                         />
                       </motion.div>
@@ -202,14 +202,14 @@ export function EditExpenseDrawer({ expense, isOpen, onClose }: EditExpenseDrawe
 
                 {/* Note */}
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-muted-foreground">
+                  <label className="mb-2 block text-sm font-semibold text-foreground/80">
                     Note (Optional)
                   </label>
                   <input
                     type="text"
                     enterKeyHint="done"
                     {...form.register("note")}
-                    className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                    className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 text-sm font-medium text-foreground placeholder:text-muted-foreground/70 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
                     placeholder="What was this for?"
                   />
                   {form.formState.errors.note && (
@@ -221,13 +221,13 @@ export function EditExpenseDrawer({ expense, isOpen, onClose }: EditExpenseDrawe
 
                 {/* Date */}
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-muted-foreground">
+                  <label className="mb-2 block text-sm font-semibold text-foreground/80">
                     Date
                   </label>
                   <input
                     type="date"
                     {...form.register("date")}
-                    className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
+                    className="w-full rounded-xl border-2 border-border bg-background px-4 py-3 text-sm font-semibold text-foreground focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 transition-all"
                   />
                   {form.formState.errors.date && (
                     <p className="mt-1 text-sm text-destructive">
@@ -241,7 +241,7 @@ export function EditExpenseDrawer({ expense, isOpen, onClose }: EditExpenseDrawe
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="w-full rounded-xl bg-primary py-4 font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/30 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full rounded-xl bg-gradient-to-br from-[#062B55] via-[#083B73] to-[#0A4A8C] py-4 font-bold text-white shadow-xl shadow-primary/30 ring-1 ring-white/10 transition-all hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-primary/35 active:translate-y-0 active:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/25"
                 >
                   {isPending ? "Saving..." : "Save Changes"}
                 </button>
